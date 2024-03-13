@@ -1,9 +1,5 @@
-import { Card, CardContent } from "@mui/material"
-
 function SearchError({errorText}){
-    return <Card>
-        <CardContent sx={{textAlign: 'center'}}><h1>{errorText}</h1></CardContent>
-    </Card>
+    return <h1 style={{textAlign: 'center'}} >{errorText}</h1>
 }
 
 export default SearchError
