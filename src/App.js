@@ -1,16 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Container } from '@mui/system';
 import people from 'randomized-people';
+
 import SearchInput from './components/ui/SearchInput';
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
-	Paper,
-} from '@mui/material';
+import SearchError from './components/SearchError';
+import SearchTable from './components/SearchTable';
 
 const options = {
 	amount: 10,
@@ -34,28 +28,7 @@ function App() {
 	return (
 		<Container>
 			<SearchInput setSearchValue={setSearchValue} searchValue={searchValue} />
-			<TableContainer component={Paper} sx={{ mt: 5, backgroundColor: '#F2F4F6' }}>
-				<Table>
-					<TableHead>
-						<TableRow>
-							<TableCell>S/N</TableCell>
-							<TableCell>First Name</TableCell>
-							<TableCell>Last Name</TableCell>
-							<TableCell>Username</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{chooseArr.map((user, i) => (
-							<TableRow key={i}>
-								<TableCell>{i + 1}.</TableCell>
-								<TableCell>{user.firstName}</TableCell>
-								<TableCell>{user.lastName}</TableCell>
-								<TableCell>{user.username}</TableCell>
-							</TableRow>
-						))}
-					</TableBody>
-				</Table>
-			</TableContainer>
+      {chooseArr.length <= 0 ? <SearchError errorText="Search value not found" />: <SearchTable chooseArr={chooseArr}/>}
 		</Container>
 	);
 }
