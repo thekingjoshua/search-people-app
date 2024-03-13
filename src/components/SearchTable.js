@@ -1,8 +1,7 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import {Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 
 function SearchTable({chooseArr}) {
-    return <TableContainer component={Paper} sx={{ mt: 5, backgroundColor: '#F2F4F6' }}>
-    <Table>
+    return <Table>
         <TableHead>
             <TableRow>
                 <TableCell>S/N</TableCell>
@@ -22,7 +21,6 @@ function SearchTable({chooseArr}) {
             ))}
         </TableBody>
     </Table>
-</TableContainer>
 }
 
 export default SearchTable
