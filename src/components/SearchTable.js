@@ -1,6 +1,6 @@
 import {Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 
-function SearchTable({chooseArr}) {
+function SearchTable({selectedArray}) {
     return <Table>
         <TableHead>
             <TableRow>
@@ -11,7 +11,7 @@ function SearchTable({chooseArr}) {
             </TableRow>
         </TableHead>
         <TableBody>
-            {chooseArr.map((user, i) => (
+            {selectedArray.map((user, i) => (
                 <TableRow key={i}>
                     <TableCell>{i + 1}.</TableCell>
                     <TableCell>{user.firstName}</TableCell>
