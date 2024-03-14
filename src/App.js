@@ -2,14 +2,13 @@ import { Container, Paper, TableContainer } from '@mui/material';
 import people from 'randomized-people';
 
 import SearchInput from './components/SearchInput';
-import SearchError from './components/SearchError';
-import SearchTable from './components/SearchTable';
 import Loader from './components/Loader';
 
 import { ColorTheme } from './components/ui/theme';
 
 import useFilterUsers from './hooks/useFilterUsers';
 import { useMockAsync } from './hooks/useMockAsync';
+import Main from './components/Main';
 
 const options = {
 	amount: 10,
@@ -38,6 +37,3 @@ function App() {
 
 export default App;
 
-function Main ({selectedArray}){
-  return selectedArray.length <= 0 ? <SearchError text="Search value not found" />: <SearchTable selectedArray={selectedArray}/>
-} 
