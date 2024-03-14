@@ -1,26 +1,28 @@
 import { OutlinedInput } from '@mui/material';
 import SearchIcon from './icons/SearchIcon';
+import { ColorTheme, InputRadius } from './ui/theme';
+// import { useGTMDispatch } from '@elgorditosalsero/react-gtm-hook';
 
 function SearchInput({ setSearchValue, searchValue, disabled }) {
+	// useGTMDispatch
 	function handleSearchValue(e) {
 		setSearchValue(e.target.value);
 	}
 
-
 	return (
 		<OutlinedInput
-			placeholder="Search"
+			placeholder="Search..."
 			startAdornment={<SearchIcon />}
 			sx={{
-				borderRadius: '48px',
+				borderRadius: InputRadius['pill'],
 				mt: 5,
-				backgroundColor: '#F2F4F6',
-				width: "100%"
+				backgroundColor: ColorTheme.default['base'],
 			}}
+			fullWidth={true}
 			disabled={disabled}
 			onChange={handleSearchValue}
 			value={searchValue}
-		></OutlinedInput>
+			></OutlinedInput>
 	);
 }
 
