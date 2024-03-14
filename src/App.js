@@ -1,7 +1,7 @@
 import { Container, Paper, TableContainer } from '@mui/material';
 import people from 'randomized-people';
 
-import SearchInput from './components/SearchInput';
+import SearchInputWithGTMProvider from './components/SearchInput';
 import Loader from './components/Loader';
 import Main from './components/Main';
 
@@ -26,7 +26,7 @@ function App() {
 	return (
     <>
       <Container>
-        <SearchInput setSearchValue={setSearchValue} searchValue={searchValue} disabled={isLoading} />
+        <SearchInputWithGTMProvider setSearchValue={setSearchValue} searchValue={searchValue} disabled={isLoading} />
         <TableContainer component={Paper} sx={{ mt: 5, backgroundColor: ColorTheme.default['base'] }}>
           {isLoading ? <Loader/> :  <Main selectedArray={selectedArray} />}
         </TableContainer>
