@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Container, Paper, TableContainer } from '@mui/material';
 import people from 'randomized-people';
 
@@ -7,40 +6,33 @@ import SearchError from './components/SearchError';
 import SearchTable from './components/SearchTable';
 import Loader from './components/Loader';
 
+import { ColorTheme } from './components/ui/theme';
+
+import useFilterUsers from './hooks/useFilterUsers';
+import { useMockAsync } from './hooks/useMockAsync';
+
 const options = {
 	amount: 10,
 	gender: 'rnd',
 	withPhoto: true,
 };
+
 const users = people(options)
 
 function App() {
-	const [searchValue, setSearchValue] = useState('');
-	const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-      setTimeout(() => {
-          setIsLoading(false)
-      }, 2000)
-  }, [])
-  
-  const newArr = users.filter(
-    user =>
-      user.firstName.toLowerCase().includes(searchValue.toLocaleLowerCase()) ||
-      user.lastName.toLowerCase().includes(searchValue.toLocaleLowerCase()) ||
-      user.username.toLowerCase().includes(searchValue.toLocaleLowerCase())
-  );
+  const {newArr, searchValue, setSearchValue} = useFilterUsers(users)
+  const {isLoading} = useMockAsync()
   const chooseArr = searchValue.length > 0 ? newArr : users
 
 	return (
-      <>
-		<Container>
-			<SearchInput setSearchValue={setSearchValue} searchValue={searchValue} disabled={isLoading} />
-      <TableContainer component={Paper} sx={{ mt: 5, backgroundColor: '#F2F4F6' }}>
-        {isLoading ? <Loader/> :  <Main chooseArr={chooseArr} />}
-      </TableContainer>
-		</Container>
-      </>
+    <>
+      <Container>
+        <SearchInput setSearchValue={setSearchValue} searchValue={searchValue} disabled={isLoading} />
+        <TableContainer component={Paper} sx={{ mt: 5, backgroundColor: ColorTheme.default['base'] }}>
+          {isLoading ? <Loader/> :  <Main chooseArr={chooseArr} />}
+        </TableContainer>
+      </Container>
+    </>
 	);
 }
 
