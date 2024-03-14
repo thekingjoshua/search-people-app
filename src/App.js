@@ -11,7 +11,7 @@ import useSearch from './hooks/useSearch';
 import useGeneratePeople from './hooks/useGeneratePeople';
 
 const options = {
-	amount: 10,
+	amount: 100,
 	gender: 'rnd',
 };
 
