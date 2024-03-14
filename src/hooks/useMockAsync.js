@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useMockAsync(){
+function useMockAsync(){
 	const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -11,3 +11,4 @@ export function useMockAsync(){
 
     return {isLoading}
 }
+export default useMockAsync

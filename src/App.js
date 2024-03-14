@@ -3,12 +3,12 @@ import people from 'randomized-people';
 
 import SearchInput from './components/SearchInput';
 import Loader from './components/Loader';
+import Main from './components/Main';
 
 import { ColorTheme } from './components/ui/theme';
 
 import useFilterUsers from './hooks/useFilterUsers';
-import { useMockAsync } from './hooks/useMockAsync';
-import Main from './components/Main';
+import useMockAsync from './hooks/useMockAsync';
 
 const options = {
 	amount: 10,
