@@ -7,8 +7,8 @@ import Main from './components/Main';
 
 import { ColorTheme } from './components/ui/theme';
 
-import useFilterUsers from './hooks/useFilterUsers';
-import useMockAsync from './hooks/useMockAsync';
+import useSearch from './hooks/useSearch';
+import useGeneratePeople from './hooks/useGeneratePeople';
 
 const options = {
 	amount: 10,
@@ -18,8 +18,8 @@ const options = {
 const users = people(options)
 
 function App() {
-  const {filteredUsers, searchValue, setSearchValue} = useFilterUsers(users)
-  const {isLoading} = useMockAsync()
+  const {filteredUsers, searchValue, setSearchValue} = useSearch(users)
+  const {isLoading} = useGeneratePeople()
 
   const selectedArray = searchValue.length > 0 ? filteredUsers : users
 
