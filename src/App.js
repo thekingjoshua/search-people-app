@@ -14,22 +14,22 @@ import { useMockAsync } from './hooks/useMockAsync';
 const options = {
 	amount: 10,
 	gender: 'rnd',
-	withPhoto: true,
 };
 
 const users = people(options)
 
 function App() {
-  const {newArr, searchValue, setSearchValue} = useFilterUsers(users)
+  const {filteredUsers, searchValue, setSearchValue} = useFilterUsers(users)
   const {isLoading} = useMockAsync()
-  const chooseArr = searchValue.length > 0 ? newArr : users
+
+  const selectedArray = searchValue.length > 0 ? filteredUsers : users
 
 	return (
     <>
       <Container>
         <SearchInput setSearchValue={setSearchValue} searchValue={searchValue} disabled={isLoading} />
         <TableContainer component={Paper} sx={{ mt: 5, backgroundColor: ColorTheme.default['base'] }}>
-          {isLoading ? <Loader/> :  <Main chooseArr={chooseArr} />}
+          {isLoading ? <Loader/> :  <Main selectedArray={selectedArray} />}
         </TableContainer>
       </Container>
     </>
@@ -38,6 +38,6 @@ function App() {
 
 export default App;
 
-function Main ({chooseArr}){
-  return chooseArr.length <= 0 ? <SearchError errorText="Search value not found" />: <SearchTable chooseArr={chooseArr}/>
+function Main ({selectedArray}){
+  return selectedArray.length <= 0 ? <SearchError text="Search value not found" />: <SearchTable selectedArray={selectedArray}/>
 } 
