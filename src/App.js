@@ -6,11 +6,9 @@ import Main from './components/Main';
 import { ColorTheme } from './components/ui/theme';
 
 import useGeneratePeople from './hooks/useGeneratePeople';
-// import Button from './components/ui/Button';
 import { useState } from 'react';
-// import SearchInput from './components/SearchInput';
+import SearchInput from './components/SearchInput';
 import SearchError from './components/SearchError';
-import SearchInputWithGTMProvider from './components/SearchInput';
 import ButtonWithGTMProvider from './components/ui/Button';
 
 
@@ -34,15 +32,7 @@ function App() {
     <>
       <Container>
         <Stack direction="row"  alignItems="center" justifyContent='center' mt={5} gap={5} >
-          {/* <SearchInput 
-          setSearchInputValue={setSearchInputValue}  
-          setSearchInputInvalid={setSearchInputInvalid} 
-          setSearchResults={setSearchResults} 
-          setNoResultError={setNoResultError}
-          searchInputInvalid={searchInputInvalid}
-          disabled={isLoading}
-          /> */}
-          <SearchInputWithGTMProvider
+          <SearchInput 
           setSearchInputValue={setSearchInputValue}  
           setSearchInputInvalid={setSearchInputInvalid} 
           setSearchResults={setSearchResults} 
@@ -50,31 +40,14 @@ function App() {
           searchInputInvalid={searchInputInvalid}
           disabled={isLoading}
           />
-          {/* <SearchInput 
-          setSearchInputValue={setSearchInputValue}  
-          setSearchInputInvalid={setSearchInputInvalid} 
-          setSearchResults={setSearchResults} 
-          setNoResultError={setNoResultError}
-          searchInputInvalid={searchInputInvalid}
-          disabled={isLoading}
-          /> */}
-          {/* <Button 
-            searchInputValue={searchInputValue} 
-            setSearchInputInvalid={setSearchInputInvalid} 
-            users={users} 
-            setSearchResults={setSearchResults} 
-            searchResults={searchResults} 
-            setNoResultError={setNoResultError}
-            disabled={isLoading}
-            /> */}
             <ButtonWithGTMProvider
-                          searchInputValue={searchInputValue} 
-                          setSearchInputInvalid={setSearchInputInvalid} 
-                          users={users} 
-                          setSearchResults={setSearchResults} 
-                          searchResults={searchResults} 
-                          setNoResultError={setNoResultError}
-                          disabled={isLoading}
+              searchInputValue={searchInputValue} 
+              setSearchInputInvalid={setSearchInputInvalid} 
+              users={users} 
+              setSearchResults={setSearchResults} 
+              searchResults={searchResults} 
+              setNoResultError={setNoResultError}
+              disabled={isLoading}
             />
         </Stack>
           <p style={{color: ColorTheme.error['base']}}>

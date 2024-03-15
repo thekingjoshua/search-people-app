@@ -39,7 +39,6 @@ function Button ({searchInputValue, setSearchInputInvalid, users, setSearchResul
 
 
 
-// export default Button;
 
 function ButtonWithGTMProvider(props) {
     return (
