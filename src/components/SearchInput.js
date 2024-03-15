@@ -13,7 +13,7 @@ function SearchInput({ searchInputValue, setSearchInputValue, setSearchInputInva
 		if(e.target.value === ''){
 			setSearchResults([])
 			setSearchInputInvalid(true)
-			setNoResultError(false)
+			// setNoResultError(false)
 		}
 	}
 
