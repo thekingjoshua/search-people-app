@@ -6,11 +6,12 @@ import Main from './components/Main';
 import { ColorTheme } from './components/ui/theme';
 
 import useGeneratePeople from './hooks/useGeneratePeople';
-import Button from './components/ui/Button';
+// import Button from './components/ui/Button';
 import { useState } from 'react';
 // import SearchInput from './components/SearchInput';
 import SearchError from './components/SearchError';
 import SearchInputWithGTMProvider from './components/SearchInput';
+import ButtonWithGTMProvider from './components/ui/Button';
 
 
 const options = {
@@ -57,7 +58,7 @@ function App() {
           searchInputInvalid={searchInputInvalid}
           disabled={isLoading}
           /> */}
-          <Button 
+          {/* <Button 
             searchInputValue={searchInputValue} 
             setSearchInputInvalid={setSearchInputInvalid} 
             users={users} 
@@ -65,6 +66,15 @@ function App() {
             searchResults={searchResults} 
             setNoResultError={setNoResultError}
             disabled={isLoading}
+            /> */}
+            <ButtonWithGTMProvider
+                          searchInputValue={searchInputValue} 
+                          setSearchInputInvalid={setSearchInputInvalid} 
+                          users={users} 
+                          setSearchResults={setSearchResults} 
+                          searchResults={searchResults} 
+                          setNoResultError={setNoResultError}
+                          disabled={isLoading}
             />
         </Stack>
           <p style={{color: ColorTheme.error['base']}}>

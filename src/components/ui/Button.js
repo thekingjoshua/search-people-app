@@ -1,8 +1,11 @@
 import { Button as MuiButton } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useGTMDispatch, GTMProvider } from '@elgorditosalsero/react-gtm-hook';
+
 
 function Button ({searchInputValue, setSearchInputInvalid, users, setSearchResults, searchResults, setNoResultError, disabled}) {
     const [searchPerformed, setSearchPerformed] = useState(false);
+	const gtmDispatch = useGTMDispatch();
 
     useEffect(() => {
         if (searchPerformed && searchInputValue !== '' && searchResults.length === 0) {
@@ -14,7 +17,10 @@ function Button ({searchInputValue, setSearchInputInvalid, users, setSearchResul
 
     const handleSearch = () => {
         setSearchInputInvalid(searchInputValue === '' ? true : false);
- 
+        gtmDispatch({
+			event: 'search',
+			searchQuery: searchInputValue,
+		  });
         const searchValueLowerCased = searchInputValue.toLowerCase();
         const filteredUsers = users.filter( 
               user => ['firstName', 'lastName', 'username'].some(userKey => 
@@ -33,4 +39,14 @@ function Button ({searchInputValue, setSearchInputInvalid, users, setSearchResul
 
 
 
-export default Button;
+// export default Button;
+
+function ButtonWithGTMProvider(props) {
+    return (
+      <GTMProvider>
+        <Button {...props} />
+      </GTMProvider>
+    );
+  }
+  
+  export default ButtonWithGTMProvider;
