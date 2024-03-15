@@ -1,7 +1,7 @@
 import { Container, Paper, TableContainer } from '@mui/material';
 import people from 'randomized-people';
 
-import SearchInputWithGTMProvider from './components/SearchInput';
+// import SearchInputWithGTMProvider from './components/SearchInput';
 import Loader from './components/Loader';
 import Main from './components/Main';
 
@@ -9,6 +9,7 @@ import { ColorTheme } from './components/ui/theme';
 
 import useSearch from './hooks/useSearch';
 import useGeneratePeople from './hooks/useGeneratePeople';
+import SearchInput from './components/SearchInput';
 
 const options = {
 	amount: 100,
@@ -26,7 +27,8 @@ function App() {
 	return (
     <>
       <Container>
-        <SearchInputWithGTMProvider setSearchValue={setSearchValue} searchValue={searchValue} disabled={isLoading} />
+        {/* <SearchInputWithGTMProvider setSearchValue={setSearchValue} searchValue={searchValue} disabled={isLoading} /> */}
+        <SearchInput setSearchValue={setSearchValue} searchValue={searchValue} disabled={isLoading} />
         <TableContainer component={Paper} sx={{ mt: 5, backgroundColor: ColorTheme.default['base'] }}>
           {isLoading ? <Loader/> :  <Main selectedArray={selectedArray} />}
         </TableContainer>
