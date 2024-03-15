@@ -8,8 +8,9 @@ import { ColorTheme } from './components/ui/theme';
 import useGeneratePeople from './hooks/useGeneratePeople';
 import Button from './components/ui/Button';
 import { useState } from 'react';
-import SearchInput from './components/SearchInput';
+// import SearchInput from './components/SearchInput';
 import SearchError from './components/SearchError';
+import SearchInputWithGTMProvider from './components/SearchInput';
 
 
 const options = {
@@ -32,7 +33,15 @@ function App() {
     <>
       <Container>
         <Stack direction="row"  alignItems="center" justifyContent='center' mt={5} gap={5} >
-          <SearchInput 
+          {/* <SearchInput 
+          setSearchInputValue={setSearchInputValue}  
+          setSearchInputInvalid={setSearchInputInvalid} 
+          setSearchResults={setSearchResults} 
+          setNoResultError={setNoResultError}
+          searchInputInvalid={searchInputInvalid}
+          disabled={isLoading}
+          /> */}
+          <SearchInputWithGTMProvider
           setSearchInputValue={setSearchInputValue}  
           setSearchInputInvalid={setSearchInputInvalid} 
           setSearchResults={setSearchResults} 
@@ -40,6 +49,14 @@ function App() {
           searchInputInvalid={searchInputInvalid}
           disabled={isLoading}
           />
+          {/* <SearchInput 
+          setSearchInputValue={setSearchInputValue}  
+          setSearchInputInvalid={setSearchInputInvalid} 
+          setSearchResults={setSearchResults} 
+          setNoResultError={setNoResultError}
+          searchInputInvalid={searchInputInvalid}
+          disabled={isLoading}
+          /> */}
           <Button 
             searchInputValue={searchInputValue} 
             setSearchInputInvalid={setSearchInputInvalid} 
