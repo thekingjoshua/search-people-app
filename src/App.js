@@ -1,19 +1,14 @@
 import { Container, Paper, Stack, TableContainer } from '@mui/material';
 import people from 'randomized-people';
 
-// import SearchInputWithGTMProvider from './components/SearchInput';
-import Loader from './components/Loader';
 import Main from './components/Main';
 
 import { ColorTheme } from './components/ui/theme';
 
-import useSearch from './hooks/useSearch';
 import useGeneratePeople from './hooks/useGeneratePeople';
 import Button from './components/ui/Button';
 import { useState } from 'react';
 import SearchInput from './components/SearchInput';
-import SearchTable from './components/SearchTable';
-import {Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 import SearchError from './components/SearchError';
 
 

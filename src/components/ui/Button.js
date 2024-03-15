@@ -4,7 +4,7 @@ import { useEffect } from "react";
 function Button ({searchInputValue, setSearchInputInvalid, users, setSearchResults, searchResults, setNoResultError, disabled}) {
     
     useEffect(() => {
-        if (searchInputValue != '' && searchResults.length === 0) {
+        if (searchInputValue && searchResults.length === 0) {
             setNoResultError(true);
         } else {
             setNoResultError(false);
