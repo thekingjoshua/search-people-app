@@ -1,8 +1,12 @@
-import SearchError from "./SearchError"
+import Loader from "./Loader"
 import SearchTable from "./SearchTable"
 
-function Main ({selectedArray}){
-    return selectedArray.length <= 0 ? <SearchError text="Search value not found" />: <SearchTable selectedArray={selectedArray}/>
+function Main ({isLoading, result}){
+    if(isLoading){
+        return <Loader/>
+    } else {
+        return <SearchTable selectedArray={result} />
+    }
 } 
 
 export default Main

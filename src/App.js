@@ -1,7 +1,7 @@
-import { Container, Paper, TableContainer } from '@mui/material';
+import { Container, Paper, Stack, TableContainer } from '@mui/material';
 import people from 'randomized-people';
 
-import SearchInputWithGTMProvider from './components/SearchInput';
+// import SearchInputWithGTMProvider from './components/SearchInput';
 import Loader from './components/Loader';
 import Main from './components/Main';
 
@@ -9,28 +9,57 @@ import { ColorTheme } from './components/ui/theme';
 
 import useSearch from './hooks/useSearch';
 import useGeneratePeople from './hooks/useGeneratePeople';
-// import SearchInput from './components/SearchInput';
+import Button from './components/ui/Button';
+import { useState } from 'react';
+import SearchInput from './components/SearchInput';
+import SearchTable from './components/SearchTable';
+import {Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
+import SearchError from './components/SearchError';
+
 
 const options = {
-	amount: 100,
+	amount: 5,
 	gender: 'rnd',
 };
 
 const users = people(options)
 
 function App() {
-  const {filteredUsers, searchValue, setSearchValue} = useSearch(users)
+  const [searchInputValue, setSearchInputValue] =  useState('');
+  const [searchInputInvalid, setSearchInputInvalid] =  useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+  const [noResultError, setNoResultError] = useState(false)
   const {isLoading} = useGeneratePeople()
+  
+  const result = searchResults.length > 0 ? searchResults : users;
 
-  const selectedArray = searchValue.length > 0 ? filteredUsers : users
-
-	return (
+	return ( 
     <>
       <Container>
-        <SearchInputWithGTMProvider setSearchValue={setSearchValue} searchValue={searchValue} disabled={isLoading} />
-        {/* <SearchInput setSearchValue={setSearchValue} searchValue={searchValue} disabled={isLoading} /> */}
+        <Stack direction="row"  alignItems="center" justifyContent='center' mt={5} gap={5} >
+          <SearchInput 
+          setSearchInputValue={setSearchInputValue}  
+          setSearchInputInvalid={setSearchInputInvalid} 
+          setSearchResults={setSearchResults} 
+          setNoResultError={setNoResultError}
+          searchInputInvalid={searchInputInvalid}
+          disabled={isLoading}
+          />
+          <Button 
+            searchInputValue={searchInputValue} 
+            setSearchInputInvalid={setSearchInputInvalid} 
+            users={users} 
+            setSearchResults={setSearchResults} 
+            searchResults={searchResults} 
+            setNoResultError={setNoResultError}
+            disabled={isLoading}
+            />
+        </Stack>
+          <p style={{color: ColorTheme.error['base']}}>
+            {searchInputInvalid ? 'Search query is empty.' : '' } 
+          </p>
         <TableContainer component={Paper} sx={{ mt: 5, backgroundColor: ColorTheme.default['base'] }}>
-          {isLoading ? <Loader/> :  <Main selectedArray={selectedArray} />}
+            {noResultError ? <SearchError text='Not found' /> : <Main isLoading={isLoading} result={result}  />  }
         </TableContainer>
       </Container>
     </>
@@ -38,4 +67,3 @@ function App() {
 }
 
 export default App;
-
