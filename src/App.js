@@ -13,7 +13,7 @@ import SearchMatchError from './components/SearchMatchError';
 
 
 const options = {
-	amount: 5,
+	amount: 100,
 	gender: 'rnd',
 };
 
