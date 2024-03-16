@@ -5,8 +5,9 @@ import { useGTMDispatch, GTMProvider } from '@elgorditosalsero/react-gtm-hook';
 
 function Button ({searchInputValue, setSearchInputInvalid, users, setSearchResults, searchResults, setNoResultError, disabled}) {
     const [searchPerformed, setSearchPerformed] = useState(false);
+    const [searchNumber, setSearchNumber] = useState(0)
+    
 	const gtmDispatch = useGTMDispatch();
-    let search_num = 0;
 
     useEffect(() => {
         if (searchPerformed && searchInputValue !== '' && searchResults.length === 0) {
@@ -18,6 +19,8 @@ function Button ({searchInputValue, setSearchInputInvalid, users, setSearchResul
 
     const handleSearch = () => {
         setSearchInputInvalid(searchInputValue === '' ? true : false);
+        setSearchNumber(prevNum => prevNum + 1)
+
         gtmDispatch({
 			event: 'search',
 			searchQuery: searchInputValue,
@@ -25,7 +28,7 @@ function Button ({searchInputValue, setSearchInputInvalid, users, setSearchResul
 
         gtmDispatch({
 			event: 'num_search_event',
-			searchQuery: search_num++,
+			searchQuery: searchNumber + 1,
 		  });
 
         const searchValueLowerCased = searchInputValue.toLowerCase();
