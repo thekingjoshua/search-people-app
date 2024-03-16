@@ -6,10 +6,12 @@ import Main from './components/Main';
 import { ColorTheme } from './components/ui/theme';
 
 import useGeneratePeople from './hooks/useGeneratePeople';
-import { useState } from 'react';
+import {useState } from 'react';
 import SearchInput from './components/SearchInput';
 import SearchError from './components/SearchError';
-import ButtonWithGTMProvider from './components/ui/Button';
+import Button from './components/ui/Button';
+// import ButtonWithGTMProvider from './components/ui/Button';
+// import ClickButton from './components/ui/ClickButton';
 
 
 const options = {
@@ -27,7 +29,6 @@ function App() {
   const {isLoading} = useGeneratePeople()
   
   const result = searchResults.length > 0 ? searchResults : users;
-
 	return ( 
     <>
       <Container>
@@ -40,7 +41,8 @@ function App() {
           searchInputInvalid={searchInputInvalid}
           disabled={isLoading}
           />
-            <ButtonWithGTMProvider
+
+            <Button
               searchInputValue={searchInputValue} 
               setSearchInputInvalid={setSearchInputInvalid} 
               users={users} 
@@ -48,7 +50,7 @@ function App() {
               searchResults={searchResults} 
               setNoResultError={setNoResultError}
               disabled={isLoading}
-            />
+              />
         </Stack>
           <p style={{color: ColorTheme.error['base']}}>
             {searchInputInvalid ? 'Search query is empty.' : '' } 

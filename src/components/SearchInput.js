@@ -11,6 +11,9 @@ function SearchInput({ searchInputValue, setSearchInputValue, setSearchInputInva
 		if(e.target.value === ''){
 			setSearchResults([])
 			setSearchInputInvalid(true)
+		}else{
+			setSearchInputInvalid(false)
+			setNoResultError(false)
 		}
 	}
 
