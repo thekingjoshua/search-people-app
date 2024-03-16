@@ -6,12 +6,7 @@ import { useGTMDispatch, GTMProvider } from '@elgorditosalsero/react-gtm-hook';
 function Button ({searchInputValue, setSearchInputInvalid, users, setSearchResults, searchResults, setNoResultError, disabled}) {
     const [searchPerformed, setSearchPerformed] = useState(false);
     const [searchNumber, setSearchNumber] = useState(0);
-    const [foundSearchMatch, setFoundSearchMatch] = useState(false);
-    if(searchResults.length >= 1){
-        setFoundSearchMatch(true)
-    }else{
-        setFoundSearchMatch(false)
-    }
+    // const [foundSearchMatch, setFoundSearchMatch] = useState(false);
 
 	const gtmDispatch = useGTMDispatch();
 
@@ -31,7 +26,7 @@ function Button ({searchInputValue, setSearchInputInvalid, users, setSearchResul
 			event: 'search_query_and_num',
 			searchQuery: searchInputValue,
             numOfSearch: searchNumber + 1,
-            foundResult: foundSearchMatch
+            foundResult: searchResults.length > 0 ? true : false
 		  });
 
 
