@@ -30,7 +30,7 @@ function Button ({searchInputValue, setSearchInputInvalid, users, setSearchResul
         gtmDispatch({
 			event: 'search_query_and_num',
 			searchQuery: searchInputValue,
-            numOfSearch: searchNumber + 1,
+            numOfSearches: searchNumber + 1,
             foundResult: filteredUsers.length > 0 ? 'yes' : 'no'
 		  });
 
