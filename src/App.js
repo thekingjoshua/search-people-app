@@ -9,7 +9,6 @@ import useGeneratePeople from './hooks/useGeneratePeople';
 import {useState } from 'react';
 import SearchInput from './components/SearchInput';
 import SearchError from './components/SearchError';
-// import Button from './components/ui/Button';
 import ButtonWithGTMProvider from './components/ui/Button';
 
 
@@ -40,16 +39,6 @@ function App() {
           searchInputInvalid={searchInputInvalid}
           disabled={isLoading}
           />
-
-            {/* <Button
-              searchInputValue={searchInputValue} 
-              setSearchInputInvalid={setSearchInputInvalid} 
-              users={users} 
-              setSearchResults={setSearchResults} 
-              searchResults={searchResults} 
-              setNoResultError={setNoResultError}
-              disabled={isLoading}
-              /> */}
             <ButtonWithGTMProvider
               searchInputValue={searchInputValue} 
               setSearchInputInvalid={setSearchInputInvalid} 
