@@ -22,19 +22,18 @@ function Button ({searchInputValue, setSearchInputInvalid, users, setSearchResul
         setSearchInputInvalid(searchInputValue === '' ? true : false);
         setSearchNumber(prevNum => prevNum + 1)
 
-        gtmDispatch({
-			event: 'search_query_and_num',
-			searchQuery: searchInputValue,
-            numOfSearch: searchNumber + 1,
-            foundResult: searchResults.length > 0 ? true : false
-		  });
-
-
         const searchValueLowerCased = searchInputValue.toLowerCase();
         const filteredUsers = users.filter( 
               user => ['firstName', 'lastName', 'username'].some(userKey => 
                   user[userKey].toLowerCase().includes(searchValueLowerCased))
         ); 
+        gtmDispatch({
+			event: 'search_query_and_num',
+			searchQuery: searchInputValue,
+            numOfSearch: searchNumber + 1,
+            foundResult: filteredUsers.length > 0 ? 'yes' : 'no'
+		  });
+
         setSearchResults(filteredUsers);
         setSearchPerformed(true);
     };
