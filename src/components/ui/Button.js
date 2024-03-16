@@ -6,7 +6,6 @@ import { useGTMDispatch, GTMProvider } from '@elgorditosalsero/react-gtm-hook';
 function Button ({searchInputValue, setSearchInputInvalid, users, setSearchResults, searchResults, setNoResultError, disabled}) {
     const [searchPerformed, setSearchPerformed] = useState(false);
     const [searchNumber, setSearchNumber] = useState(0);
-    // const [foundSearchMatch, setFoundSearchMatch] = useState(false);
 
 	const gtmDispatch = useGTMDispatch();
 

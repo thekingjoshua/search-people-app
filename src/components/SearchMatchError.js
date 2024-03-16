@@ -1,7 +1,7 @@
 import { ColorTheme } from "./ui/theme"
 
-function SearchError({text}){
+function SearchMatchError({text= 'No matches for search found'}){
     return <h1 style={{textAlign: 'center', color: ColorTheme.error['base']}} >{text}</h1>
 }
 
-export default SearchError
+export default SearchMatchError

@@ -8,8 +8,8 @@ import { ColorTheme } from './components/ui/theme';
 import useGeneratePeople from './hooks/useGeneratePeople';
 import {useState } from 'react';
 import SearchInput from './components/SearchInput';
-import SearchError from './components/SearchError';
 import ButtonWithGTMProvider from './components/ui/Button';
+import SearchMatchError from './components/SearchMatchError';
 
 
 const options = {
@@ -17,8 +17,8 @@ const options = {
 	gender: 'rnd',
 };
 
-const users = people(options)
-
+const users = people(options);
+console.log(users)
 function App() {
   const [searchInputValue, setSearchInputValue] =  useState('');
   const [searchInputInvalid, setSearchInputInvalid] =  useState(false);
@@ -27,6 +27,7 @@ function App() {
   const {isLoading} = useGeneratePeople()
   
   const result = searchResults.length > 0 ? searchResults : users;
+
 	return ( 
     <>
       <Container>
@@ -49,11 +50,8 @@ function App() {
               disabled={isLoading}
               />
         </Stack>
-          <p style={{color: ColorTheme.error['base']}}>
-            {searchInputInvalid ? 'Search query is empty.' : '' } 
-          </p>
         <TableContainer component={Paper} sx={{ mt: 5, backgroundColor: ColorTheme.default['base'] }}>
-            {noResultError ? <SearchError text='Not found' /> : <Main isLoading={isLoading} result={result}  />  }
+            {noResultError ? <SearchMatchError /> : <Main isLoading={isLoading} result={result}  />  }
         </TableContainer>
       </Container>
     </>
